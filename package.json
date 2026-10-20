@@ -1,0 +1,26 @@
+{
+  "name": "@frostfire575/claude-code-statusline",
+  "version": "1.0.0",
+  "description": "Boxed status line for Claude Code: context, 5h/7d rate limits, cost, cache, and a rolling usage ledger.",
+  "bin": {
+    "claude-code-statusline": "bin/cli.js"
+  },
+  "files": [
+    "bin",
+    "src"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
+  "keywords": [
+    "claude",
+    "claude-code",
+    "statusline",
+    "status-line"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/frostfire575/claude-code-statusline.git"
+  },
+  "license": "MIT"
+}
