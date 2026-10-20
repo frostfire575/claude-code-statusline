@@ -1,5 +1,5 @@
 {
-  "name": "@frostfire575/claude-code-statusline",
+  "name": "@frostfire/claude-code-statusline",
   "version": "1.0.0",
   "description": "Boxed status line for Claude Code: context, 5h/7d rate limits, cost, cache, and a rolling usage ledger.",
   "bin": {

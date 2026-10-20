@@ -21,7 +21,7 @@ If you use the caveman plugin for Claude Code, a third box shows the current mod
 You need Node.js 18 or newer.
 
 ```sh
-npx @frostfire575/claude-code-statusline init
+npx @frostfire/claude-code-statusline init
 ```
 
 Or straight from GitHub, without npm:
@@ -35,7 +35,7 @@ Either way, `init` copies the script to `~/.claude/claude-code-statusline/` and 
 To skip the questions, for a script or dotfiles setup:
 
 ```sh
-npx @frostfire575/claude-code-statusline init --yes --caveman=off --usage=on
+npx @frostfire/claude-code-statusline init --yes --caveman=off --usage=on
 ```
 
 To update, run `init` again. Your answers are kept.
@@ -75,7 +75,7 @@ The session box is always 60 columns, which fits a split pane. The usage box add
 ## Uninstall
 
 ```sh
-npx @frostfire575/claude-code-statusline uninstall
+npx @frostfire/claude-code-statusline uninstall
 ```
 
 This restores your previous status line (or removes the setting) and deletes `~/.claude/claude-code-statusline/`. It leaves `~/.claude/usage/` alone, so reinstalling later keeps your history. Delete that folder yourself if you want it gone.
