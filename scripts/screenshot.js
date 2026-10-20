@@ -94,10 +94,10 @@ for (const part of ansi.split(/(\x1b\[[0-9;]*m)/)) {
 
 const page = `<!doctype html><meta charset="utf-8"><style>
 html,body{margin:0;background:transparent}
-.win{display:inline-block;width:max-content;margin:24px;background:#16161e;border-radius:12px;box-shadow:0 12px 40px rgba(0,0,0,.45);border:1px solid #2a2a36}
-.bar{height:34px;display:flex;align-items:center;gap:8px;padding:0 14px}
-.bar i{width:12px;height:12px;border-radius:50%;display:block}
-pre{margin:0;padding:6px 22px 22px;font:15px/1.2 "Cascadia Mono",Consolas,monospace;color:#cdcdd7}
+.win{display:block;width:max-content;background:#16161e;border-radius:10px;border:1px solid #2a2a36}
+.bar{height:24px;display:flex;align-items:center;gap:7px;padding:0 12px}
+.bar i{width:10px;height:10px;border-radius:50%;display:block}
+pre{margin:0;padding:2px 14px 12px;font:15px/1.2 "Cascadia Mono",Consolas,monospace;color:#cdcdd7}
 .cell{display:inline-block;width:1ch;text-align:center}
 .wide{display:inline-block;width:2ch;text-align:center;font-family:"Segoe UI Emoji","Apple Color Emoji",sans-serif}
 </style><div class="win"><div class="bar"><i style="background:#ff5f57"></i><i style="background:#febc2e"></i><i style="background:#28c840"></i></div><pre>${html}</pre></div>`;
@@ -115,11 +115,19 @@ const browser = process.argv[2] || [
 ].find((p) => fs.existsSync(p));
 if (!browser) throw new Error("no Chrome or Edge found; pass its path as the first argument");
 
+// Measure the window first so the PNG is cropped to it: README images scale to page width,
+// and any spare canvas shrinks the text.
+const url = `file:///${htmlFile.replace(/\\/g, "/")}`;
+const flags = ["--headless=new", "--disable-gpu", "--hide-scrollbars"];
+fs.appendFileSync(htmlFile, `<script>const r=document.querySelector(".win").getBoundingClientRect();document.body.dataset.size=Math.ceil(r.width)+","+Math.ceil(r.height)</script>`);
+const dom = execFileSync(browser, [...flags, "--window-size=2000,600", "--dump-dom", url], { stdio: ["ignore", "pipe", "ignore"] }).toString();
+const size = dom.match(/data-size="(\d+,\d+)"/)?.[1];
+if (!size) throw new Error("could not measure the window");
+
 const out = path.join(docs, "screenshot.png");
 execFileSync(browser, [
-  "--headless=new", "--disable-gpu", "--hide-scrollbars", "--force-device-scale-factor=2",
-  "--default-background-color=00000000", "--window-size=1225,215",
-  `--screenshot=${out}`, `file:///${htmlFile.replace(/\\/g, "/")}`,
+  ...flags, "--force-device-scale-factor=2", "--default-background-color=00000000",
+  `--window-size=${size}`, `--screenshot=${out}`, url,
 ], { stdio: "ignore" });
 fs.rmSync(home, { recursive: true, force: true });
 console.log(`wrote ${out}`);
