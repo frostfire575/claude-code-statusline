@@ -1,8 +1,21 @@
+
 <p align="center">
-  <img src="https://raw.githubusercontent.com/frostfire575/claude-code-statusline/main/docs/screenshot.png" alt="claude-code-statusline: a session box with context and rate limit meters, a rolling usage box, and a caveman box" width="100%">
+  <img
+    src="https://raw.githubusercontent.com/frostfire575/claude-code-statusline/main/docs/screenshot.png"
+    alt="claude-code-statusline screenshot"
+    width="100%"
+  >
 </p>
 
-<h1 align="center">claude-code-statusline</h1>
+<h1 align="center">
+  claude-code-statusline
+  <img
+    src="https://visitor-badge.laobi.icu/badge?page_id=frostfire575.claude-code-statusline&left_text=Repo%20Views&left_color=0d1117&right_color=0d1117"
+    alt="Visitors"
+    height="24"
+  >
+</h1>
+
 
 <p align="center"><strong>A boxed status line for Claude Code: context, rate limits, cost, cache and a 30-day usage ledger.</strong></p>
 
