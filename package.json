@@ -5,6 +5,9 @@
   "bin": {
     "claude-code-statusline": "bin/cli.js"
   },
+  "scripts": {
+    "test": "node --test test/smoke.test.js"
+  },
   "files": [
     "bin",
     "src"

@@ -13,6 +13,7 @@
 <p align="center">
   <a href="https://www.npmjs.com/package/@frostfire/claude-code-statusline"><img src="https://img.shields.io/npm/v/@frostfire/claude-code-statusline" alt="npm version"></a>
   <a href="https://www.npmjs.com/package/@frostfire/claude-code-statusline"><img src="https://img.shields.io/npm/dt/@frostfire/claude-code-statusline?label=total%20downloads&amp;color=brightgreen" alt="Lifetime npm downloads"></a>
+  <a href="https://github.com/frostfire575/claude-code-statusline/actions/workflows/ci.yml"><img src="https://github.com/frostfire575/claude-code-statusline/actions/workflows/ci.yml/badge.svg?branch=main" alt="CI"></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="License: MIT"></a>
   <a href="https://www.npmjs.com/package/@frostfire/claude-code-statusline"><img src="https://img.shields.io/node/v/@frostfire/claude-code-statusline" alt="Node.js version"></a>
   <a href="package.json"><img src="https://img.shields.io/badge/dependencies-0-brightgreen.svg" alt="Zero dependencies"></a>
@@ -147,6 +148,7 @@ git clone https://github.com/frostfire575/claude-code-statusline
 cd claude-code-statusline
 echo '{}' | node bin/cli.js          # render with empty input
 node bin/cli.js init                  # install your working copy
+npm test                              # smoke tests: render, init, uninstall
 node scripts/screenshot.js            # rebuild docs/screenshot.png (needs Chrome or Edge)
 ```
 
